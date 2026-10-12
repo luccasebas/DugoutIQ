@@ -1,0 +1,477 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-baseball: 'Barlow Condensed', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+.font-baseball {
+  font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Subtle stadium lighting / ballpark background */
+body {
+  background-color: #060d1a;
+  background-image: 
+    radial-gradient(ellipse 90% 45% at 50% 0%, rgba(249, 115, 22, 0.08), transparent 70%),
+    radial-gradient(circle at 100% 0%, rgba(16, 37, 73, 0.35), transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(16, 37, 73, 0.45), transparent 50%);
+  color: #f1f5f9;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Explicit Dark Theme */
+html.dark body,
+.dark body {
+  background-color: #060d1a !important;
+  background-image: 
+    radial-gradient(ellipse 90% 45% at 50% 0%, rgba(249, 115, 22, 0.08), transparent 70%),
+    radial-gradient(circle at 100% 0%, rgba(16, 37, 73, 0.35), transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(16, 37, 73, 0.45), transparent 50%) !important;
+  color: #f1f5f9 !important;
+}
+
+/* Light Theme overrides: Crisp daytime ballpark / chalk & clay feel with Sonoma Stompers navy and orange accents */
+html.light body,
+.light body {
+  background-color: #f4f6fa !important;
+  background-image: 
+    radial-gradient(ellipse 90% 40% at 50% 0%, rgba(249, 115, 22, 0.08), transparent 60%),
+    radial-gradient(circle at 100% 0%, rgba(203, 213, 225, 0.5), transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(226, 232, 240, 0.6), transparent 50%) !important;
+  color: #0f172a !important;
+}
+
+/* Light theme card and surface overrides */
+.light .bg-\[\#0a1629\],
+.light .bg-\[\#0a1629\]\/95,
+.light .bg-\[\#0a1629\]\/90,
+.light .bg-\[\#0a1629\]\/70 {
+  background-color: #ffffff !important;
+}
+
+.light header.bg-\[\#0a1629\]\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: #cbd5e1 !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08) !important;
+}
+
+.light .bg-\[\#060e1b\],
+.light .bg-\[\#060d1a\],
+.light .bg-slate-950 {
+  background-color: #f8fafc !important;
+}
+
+.light .bg-\[\#0a1526\] {
+  background-color: #f1f5f9 !important;
+}
+
+.light .bg-\[\#0f213b\] {
+  background-color: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+.light .bg-\[\#0d1e38\],
+.light .bg-\[\#0d1c33\] {
+  background-color: #eef2f8 !important;
+}
+
+.light .bg-\[\#0c192d\] {
+  background-color: #e2e8f0 !important;
+}
+
+.light .bg-slate-900,
+.light .bg-slate-900\/90,
+.light .bg-slate-900\/60 {
+  background-color: #f1f5f9 !important;
+}
+
+.light .bg-slate-800,
+.light .bg-slate-800\/80 {
+  background-color: #e2e8f0 !important;
+}
+
+/* Borders in light mode */
+.light .border-\[\#1b355c\],
+.light .border-\[\#183154\],
+.light .border-\[\#1c3860\],
+.light .border-\[\#1a3458\],
+.light .border-\[\#1b3760\],
+.light .border-\[\#1c3862\],
+.light .border-\[\#1e3b68\],
+.light .border-\[\#1e3d6b\],
+.light .border-\[\#203f6d\],
+.light .border-\[\#1c3a64\],
+.light .border-\[\#1e293f\],
+.light .border-slate-800,
+.light .border-slate-700 {
+  border-color: #cbd5e1 !important;
+}
+
+/* Text colors in light mode */
+.light .text-white {
+  color: #0f172a !important;
+}
+
+.light .text-slate-100,
+.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+.light .text-slate-400 {
+  color: #475569 !important;
+}
+
+.light .text-slate-500 {
+  color: #475569 !important;
+}
+
+/* Accent colors in light mode - darkened for high contrast and readability */
+.light .text-orange-100,
+.light .text-orange-200 {
+  color: #9a3412 !important; /* Deep mahogany / burnt orange */
+}
+
+.light .text-orange-300,
+.light .text-orange-400 {
+  color: #c2410c !important; /* Bold Sonoma Stompers orange */
+}
+
+.light .text-emerald-200,
+.light .text-emerald-300,
+.light .text-emerald-400 {
+  color: #047857 !important; /* High contrast dark emerald */
+}
+
+.light .text-amber-200,
+.light .text-amber-300,
+.light .text-amber-400 {
+  color: #b45309 !important; /* Dark amber */
+}
+
+.light .text-red-200,
+.light .text-red-300,
+.light .text-red-400,
+.light .text-rose-200,
+.light .text-rose-300 {
+  color: #b91c1c !important; /* Dark red */
+}
+
+.light .text-purple-200,
+.light .text-purple-300,
+.light .text-purple-400 {
+  color: #6b21a8 !important; /* Dark purple */
+}
+
+.light .text-blue-200,
+.light .text-blue-300,
+.light .text-blue-400 {
+  color: #1d4ed8 !important; /* Dark blue */
+}
+
+/* ========================================================================= */
+/* SPRAY CHART (LIGHT THEME)                                                 */
+/* ========================================================================= */
+.light .bg-slate-950 path[fill="#0c1527"] {
+  fill: #e8f5e9 !important; /* Soft daytime fair territory grass green */
+}
+
+.light .bg-slate-950 polygon[fill="#1e293b"] {
+  fill: #fbd9b3 !important; /* Infield baseball dirt clay tone */
+  stroke: #ea580c !important;
+}
+
+.light .bg-slate-950 path[stroke="#1e293b"] {
+  stroke: #94a3b8 !important;
+}
+
+.light .bg-slate-950 path[stroke="#475569"] {
+  stroke: #64748b !important;
+}
+
+.light .bg-slate-950 line[stroke="#334155"] {
+  stroke: #cbd5e1 !important;
+}
+
+.light .bg-slate-950 circle[fill="#334155"] {
+  fill: #ea580c !important; /* Pitcher's mound clay */
+}
+
+.light .bg-slate-950 text[fill="#64748b"] {
+  fill: #475569 !important;
+}
+
+.light .bg-slate-900\/90 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* ========================================================================= */
+/* STRIKE ZONE SCATTERPLOT PLATE LOCATION (TRANSPARENT IN BOTH MODES)       */
+/* ========================================================================= */
+.strike-zone-plate-box,
+.light .strike-zone-plate-box,
+html.light .strike-zone-plate-box {
+  background-color: rgba(249, 115, 22, 0.08) !important;
+  border-color: #ea580c !important;
+}
+
+.dark .strike-zone-plate-box,
+html.dark .strike-zone-plate-box {
+  background-color: rgba(249, 115, 22, 0.10) !important;
+  border-color: #f97316 !important;
+}
+
+.strike-zone-plate-box > div {
+  border-color: rgba(249, 115, 22, 0.20) !important;
+}
+
+/* Hitter strike zone heatmap container and cells */
+.light .grid-cols-3.border-2.border-emerald-500\/70 {
+  background-color: #ffffff !important;
+  border-color: #059669 !important;
+  box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.15) !important;
+}
+
+/* Hitter strike zone individual cells in light theme */
+.light .grid-cols-3 .bg-red-500\/35 {
+  background-color: #fee2e2 !important;
+  border-color: #f87171 !important;
+  color: #991b1b !important;
+}
+.light .grid-cols-3 .bg-amber-500\/25 {
+  background-color: #fef3c7 !important;
+  border-color: #fbbf24 !important;
+  color: #92400e !important;
+}
+.light .grid-cols-3 .bg-emerald-500\/20 {
+  background-color: #d1fae5 !important;
+  border-color: #34d399 !important;
+  color: #065f46 !important;
+}
+.light .grid-cols-3 .bg-rose-500\/35 {
+  background-color: #ffe4e6 !important;
+  border-color: #fb7185 !important;
+  color: #9f1239 !important;
+}
+.light .grid-cols-3 .bg-purple-500\/35 {
+  background-color: #f3e8ff !important;
+  border-color: #c084fc !important;
+  color: #581c87 !important;
+}
+.light .grid-cols-3 .bg-blue-500\/25 {
+  background-color: #dbeafe !important;
+  border-color: #60a5fa !important;
+  color: #1e40af !important;
+}
+.light .grid-cols-3 .bg-slate-800\/80 {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+.light .grid-cols-3 .bg-slate-900\/60 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+/* Ensure cell sub-labels in strike zone are crisp */
+.light .grid-cols-3 div > span.opacity-60 {
+  opacity: 0.95 !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+}
+
+.light .grid-cols-3 div > span.opacity-70 {
+  opacity: 0.95 !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+}
+
+.light polygon[fill="#1e293b"][stroke="#64748b"],
+.light polygon.dark\:fill-\[\#1e293b\],
+html.light polygon.dark\:fill-\[\#1e293b\] {
+  fill: #e2e8f0 !important;
+  stroke: #475569 !important;
+}
+
+.dark polygon.dark\:fill-\[\#1e293b\],
+html.dark polygon.dark\:fill-\[\#1e293b\] {
+  fill: #1e293b !important;
+  stroke: #64748b !important;
+}
+
+/* ========================================================================= */
+/* DUGOUT REPORT (LIGHT THEME)                                               */
+/* ========================================================================= */
+.light .from-orange-950\/40.via-\[\#0a1629\].to-\[\#060e1b\],
+.light .bg-gradient-to-br.from-orange-950\/40 {
+  background-image: linear-gradient(to bottom right, #fff7ed, #ffffff, #fff1f2) !important;
+  border-color: #ea580c !important;
+  box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.12) !important;
+}
+
+.light .bg-emerald-950\/40 {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #047857 !important;
+}
+
+.light .bg-amber-950\/40 {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+  color: #b45309 !important;
+}
+
+.light .bg-orange-950\/30,
+.light .bg-orange-950\/40 {
+  background-color: #fff7ed !important;
+  border-color: #fed7aa !important;
+}
+
+.light div.border-orange-500\/40 {
+  background-color: #fff7ed !important;
+  border-color: #f97316 !important;
+}
+
+/* ========================================================================= */
+/* DUGOUT PHONE MODAL (LIGHT THEME)                                          */
+/* ========================================================================= */
+.light .w-full.bg-\[\#060e1b\].border-4.border-\[\#1b355c\],
+.light .w-full.bg-slate-100 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15) !important;
+}
+
+.light .w-20.h-4.bg-\[\#0a1629\],
+.light .w-20.h-4.bg-slate-200 {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light .w-20.h-4 div.bg-\[\#183154\],
+.light .w-20.h-4 div.bg-slate-400 {
+  background-color: #94a3b8 !important;
+}
+
+.light div.bg-\[\#0a1629\].rounded-\[28px\],
+.light div.rounded-\[28px\].bg-white {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+.light div.bg-\[\#0a1629\].rounded-\[28px\] .divide-\[\#183154\]\/80,
+.light div.rounded-\[28px\].bg-white .divide-slate-200 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Hover states */
+.light .hover\:bg-\[\#081324\]:hover,
+.light .hover\:bg-\[\#0a1629\]:hover {
+  background-color: #f1f5f9 !important;
+}
+
+.light .hover\:bg-\[\#0f213b\]:hover,
+.light .hover\:bg-\[\#152e52\]:hover,
+.light .hover\:bg-\[\#162f55\]:hover,
+.light .hover\:bg-\[\#18345c\]:hover {
+  background-color: #cbd5e1 !important;
+}
+
+/* Light mode table header & zebra */
+.light thead.bg-\[\#0d1e38\] {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+.light thead .text-slate-200,
+.light thead .text-slate-300 {
+  color: #1e293b !important;
+}
+
+.light tr.hover\:bg-\[\#0a1629\]:hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* Retain high-contrast text on bright buttons */
+.light .bg-orange-600 .text-white,
+.light .bg-orange-500 .text-white,
+.light .bg-orange-600.text-white,
+.light .bg-orange-500.text-white,
+.light button.bg-orange-600,
+.light button.bg-orange-500 {
+  color: #ffffff !important;
+}
+
+.light .text-orange-400 {
+  color: #ea580c !important;
+}
+
+.light .text-orange-300 {
+  color: #c2410c !important;
+}
+
+.light .bg-orange-500\/15,
+.light .bg-orange-500\/20 {
+  background-color: rgba(249, 115, 22, 0.12) !important;
+}
+
+/* Shadow styling adjustments for light mode */
+.light .shadow-2xl,
+.light .shadow-xl {
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light .text-orange-300 {
+  color: #c2410c !important;
+}
+
+.light .bg-orange-500\/15,
+.light .bg-orange-500\/20 {
+  background-color: rgba(249, 115, 22, 0.12) !important;
+}
+
+/* Shadow styling adjustments for light mode */
+.light .shadow-2xl,
+.light .shadow-xl {
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Baseball scoreboard typography and stitch styles */
+.font-scoreboard {
+  font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #060e1b;
+}
+.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c3860;
+  border-radius: 3px;
+}
+.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "DugoutIQ - Baseball Player Development & Analytics Reports",
+  "description": "Elite collegiate baseball analytics and player development platform that translates TrackMan and Statcast tracking metrics into clear, actionable, feel-based player reports for summer ball athletes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
