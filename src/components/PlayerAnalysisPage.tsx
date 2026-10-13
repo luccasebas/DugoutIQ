@@ -171,9 +171,16 @@ export const PlayerAnalysisPage: React.FC<PlayerAnalysisPageProps> = ({
     return match ? match.pitches : [];
   }, [athleteGames, selectedGameId, selectedAthlete]);
 
+  const formatOutingDisplay = (gameDate: string, opponent: string): string => {
+    if (!opponent) return gameDate || 'Outing';
+    // Remove any redundant leading "vs" so date is not shown as "date vs team"
+    const cleanOpponent = opponent.replace(/^vs\.?\s+/i, '').trim();
+    return `${gameDate} - ${cleanOpponent}`;
+  };
+
   const activeGame = athleteGames.find((g) => g.gameId === selectedGameId);
   const outingLabel = activeGame
-    ? `${activeGame.gameDate} vs ${activeGame.opponent}`
+    ? formatOutingDisplay(activeGame.gameDate, activeGame.opponent)
     : `Season Aggregate (${athleteGames.length} ${athleteGames.length === 1 ? 'Outing' : 'Outings'})`;
 
   // Calculate stats strictly for this athlete and outing
@@ -369,7 +376,7 @@ TrackMan / Statcast Batted Ball & Distance Metrics:
                 <option value="ALL">Season Total ({athleteGames.length} Outings)</option>
                 {athleteGames.map((g, gIdx) => (
                   <option key={`${g.gameId}_${gIdx}`} value={g.gameId}>
-                    {g.gameDate} vs {g.opponent}
+                    {formatOutingDisplay(g.gameDate, g.opponent)}
                   </option>
                 ))}
               </select>
